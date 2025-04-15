@@ -11,8 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/emp-controller")
-@RequiredArgsConstructor
 //http://localhost:8080/emp-controller/add-employee
+@RequiredArgsConstructor
 public class EmployeeController {
     final EmployeeService service;
     //EmployeeService service = new EmployeeServiceImpl();
@@ -38,6 +38,11 @@ public class EmployeeController {
     @PutMapping("/update-employee")
     public void updateEmployee(@RequestBody Employee employee){
         service.updateEmployee(employee);
+    }
+
+    @GetMapping("/find-by-id/{id}")
+    public Employee findById(@PathVariable Long id){
+        return service.findById(id);
     }
 
 }
